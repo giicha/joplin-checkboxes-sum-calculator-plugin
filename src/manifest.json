@@ -1,0 +1,16 @@
+{
+	"manifest_version": 1,
+	"id": "com.giicha.joplin-checkboxes-sum-plugin",
+	"app_min_version": "3.7",
+	"version": "1.0.0",
+	"name": "Checkbox Sum",
+	"description": "Sum up all numbers inside note checkboxes.",
+	"author": "giicha",
+	"homepage_url": "",
+	"repository_url": "https://github.com/giicha/joplin-checkboxes-sum-plugin",
+	"keywords": [],
+	"categories": [],
+	"screenshots": [],
+	"icons": {},
+	"promo_tile": {}
+}
