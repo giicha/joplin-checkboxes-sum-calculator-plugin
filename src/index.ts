@@ -52,11 +52,18 @@ joplin.plugins.register({
 						const cleanText = stripHtml(cellHtml);
 						
 						if (cleanText.length > 0) {
-							// Highlight numbers inside the text cell by wrapping them in <b> tags
+							// Save original text with user's markdown for the details view
 							const boldedText = cleanText.replace(numberRegex, (num) => `<b>${num}</b>`);
 							rowTexts.push(boldedText);
 							
-							const cellNumbers = cleanText.match(numberRegex);
+							// FIX: Filter out HTML bold structures (<b> and <strong>) strictly for calculation
+							const calculationText = cellHtml
+								.replace(/<b[^>]*>.*?<\/b>/gi, '')
+								.replace(/<strong[^>]*>.*?<\/strong>/gi, '');
+							
+							const cleanCalculationText = stripHtml(calculationText);
+							const cellNumbers = cleanCalculationText.match(numberRegex);
+							
 							if (cellNumbers) {
 								for (const numStr of cellNumbers) {
 									rowSum += parseInt(numStr, 10);
@@ -83,7 +90,13 @@ joplin.plugins.register({
 				
 				if (lineContent.length > 0) {
 					let lineSum = 0;
-					const numbers = lineContent.match(numberRegex);
+					
+					// FIX: Filter out Markdown bold structures (**...** and __...__) strictly for calculation
+					const calculationText = lineContent
+						.replace(/\*\*.*?\*\*/g, '')
+						.replace(/__.*?__/g, '');
+					
+					const numbers = calculationText.match(numberRegex);
 					if (numbers) {
 						for (const numStr of numbers) {
 							lineSum += parseInt(numStr, 10);
@@ -91,7 +104,7 @@ joplin.plugins.register({
 						totalSum += lineSum;
 					}
 
-					// Highlight numbers inside the markdown line text
+					// Highlight remaining numbers visually in the details list
 					const boldedLineContent = lineContent.replace(numberRegex, (num) => `<b>${num}</b>`);
 
 					// Format: <b>LineSum</b> (Line text content)
@@ -110,14 +123,14 @@ joplin.plugins.register({
 				detailsHtml += `</ul>`;
 			}
 
-			// Update the side view panel with computed dataset and the new notice message at the bottom
+			// Update the side view panel with computed dataset and notice text
 			await panels.setHtml(view, `
 				<div style="padding: 10px; font-family: sans-serif;">
 					<h3 style="margin-bottom: 5px; color: #555;">Checked Sum:</h3>
 					<h1 style="color: #2da44e; font-size: 36px; margin: 0;"><b>${totalSum}</b></h1>
 					${detailsHtml}
 					<p style="font-size: 11px; color: #888; margin-top: 25px; border-top: 1px dashed #ccc; padding-top: 8px; line-height: 1.3;">
-						<i>Notice: The plugin sums up all numbers found within a checked row, including those in item titles or serial models.</i>
+						<i>Notice: The plugin sums up all numbers found within a checked row, excluding numbers formatted as **bold**.</i>
 					</p>
 				</div>
 			`);
