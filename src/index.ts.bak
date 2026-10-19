@@ -12,9 +12,15 @@ joplin.plugins.register({
 		await panels.setHtml(view, '<div><h3>Checked Sum:</h3><h1 style="color: #4fbc87; font-size: 28px;">0</h1></div>');
 		await panels.show(view);
 
-		// Helper function to strip HTML tags from string content
+		// Helper function to strip HTML tags and web spaces from string content
 		function stripHtml(html: string): string {
-			return html.replace(/<\/?[^>]+(>|\$)/g, "").trim();
+			if (!html) return "";
+			// Remove HTML tags, replace web spaces (&nbsp;), and trim edges
+			return html
+				.replace(/<\/?[^>]+(>|\$)/g, "")
+				.replace(/&nbsp;/gi, "")
+				.replace(/\s+/g, " ")
+				.trim();
 		}
 
 		// Core function to calculate the sum and refresh the UI layout
