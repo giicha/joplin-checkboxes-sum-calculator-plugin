@@ -25,9 +25,9 @@ If a row contains numbers that represent a model name or item count rather than 
 
 | Status | Item Specification | Price |
 | :--- | :--- | :--- |
-| 🟩 (Checked) | Boeing **747** Airplane Model | 1200 |
-| 🟩 (Checked) | Ergonomic Chair v**2** Office | 350 |
-| ⬜ (Unchecked) | Monitor **4K** UltraHD | 500 (Ignored) |
+| 🟩 (Checked) | **Boeing 747 Airplane Model** | 1200 |
+| 🟩 (Checked) | **Ergonomic Chair v2 Office** | 350 |
+| ⬜ (Unchecked) | **Monitor 4K UltraHD** | 500 (Ignored) |
 
 * **Panel Total:** `1550` (Calculates: 1200 + 350. The bolded `747` and `2` are safely filtered out).
 * **Details List Displayed:** 
