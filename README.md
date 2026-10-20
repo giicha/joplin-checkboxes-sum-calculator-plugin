@@ -17,7 +17,7 @@ The **Joplin Checkbox Sum Calculator** dynamically bridges text-editing with str
 
 Here are 5 practical ways to automate your workflows using the **Checkbox Sum Calculator**:
 
-* 🛒 **Smart Shopping Lists & Budget Estimators:** Build dynamic tables for your upcoming purchases. Bold text parameters like screen sizes (`**4K**`) or version tags (`v**12**`) to bypass calculation, and check items to instantly calculate the total cost of your active cart.
+* 🛒 **Smart Shopping Lists & Budget Estimators:** Build dynamic tables for your upcoming purchases. Bold text parameters like screen sizes (`**4K**`) or version tags (`**v12**`) to bypass calculation, and check items to instantly calculate the total cost of your active cart.
 * 🥦 **Daily Calorie & Macro Tracker:** Keep a food journal directly in your notes. Use decimal values (e.g., `1.5` servings or `0,5` packs) to precisely count calories, protein, or carbs as you check off what you eat throughout the day.
 * 💼 **Freelance Billing & Time Tracking:** List completed tasks with hours spent (e.g., `4.5` hours). Toggle checkboxes as tasks get approved to see the cumulative billable hours or invoice totals in real-time.
 * 📈 **Savings Progress & Debt Paydown:** Set financial milestones (e.g., *Save from October bonus — 500*). Check off milestones as you deposit money, letting the sidebar track your exact total savings progress.
@@ -46,7 +46,7 @@ Tables apply an automated structural analysis matrix tailored for tabular accoun
 
 ### Method 1: Directly via the Joplin App (Recommended)
 1. Launch **Joplin** on your desktop.
-2. Navigate to your global configuration window: `Tools` ➡️ `Options` (or `Joplin` ➡️ `Preferences` on macOS).
+2. Navigate to your global configuration window: `Tools` > `Options` (or `Joplin` > `Preferences` on macOS).
 3. Select the **Plugins** segment tab from the sidebar interface.
 4. Type **`Checkbox Sum`** directly inside the search inputs field bar.
 5. Click **Install**, then gently restart the Joplin application bootstrap to activate the panel layout.
@@ -54,7 +54,7 @@ Tables apply an automated structural analysis matrix tailored for tabular accoun
 ### Method 2: Manual JPL Installation via Local Repository Releases
 1. Navigate to the release dashboard on the official **GitHub Repository**.
 2. Download the latest compiled production binary file archive bundle: **`joplin-plugin-checkbox-sum.jpl`** from the assets tab.
-3. Open Joplin's `Tools` ➡️ `Options` ➡️ `Plugins` panel menu.
+3. Open Joplin's `Tools` > `Options` > `Plugins` panel menu.
 4. Click the gear icon tool dropdown overlay located near the top and choose **"Install from file"**.
 5. Select the downloaded `.jpl` binary, import it, and restart Joplin.
 
