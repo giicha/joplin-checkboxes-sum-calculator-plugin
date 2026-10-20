@@ -1,11 +1,15 @@
 {
-  "name": "joplin-plugin-checkbox-sum",
-  "version": "1.0.1",
+  "name": "@giicha/joplin-plugin-checkbox-sum",
+  "version": "1.0.7",
   "scripts": {
     "dist": "webpack --env joplin-plugin-config=buildMain && webpack --env joplin-plugin-config=buildExtraScripts && webpack --env joplin-plugin-config=createArchive",
     "prepare": "npm run dist",
     "updateVersion": "webpack --env joplin-plugin-config=updateVersion",
     "update": "npm install -g generator-joplin && yo joplin --node-package-manager npm --update --force"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/giicha/joplin-checkboxes-sum-plugin"
   },
   "license": "MIT",
   "keywords": [
