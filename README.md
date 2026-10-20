@@ -69,3 +69,15 @@ If a row contains numbers that represent a model name or item count rather than 
 ## 📄 License
 
 This repository is distributed under the terms of the **MIT License**. You are free to copy, modify, distribute, or use this extension setup commercially, provided the original author credits remain intact. See the `LICENSE` file for details.
+
+---
+
+## Support the Project
+
+If this plugin saves you time and helps you keep track of your calculations, consider supporting its further development! Any contribution is highly appreciated.
+
+* 💵 **USDT (TRC-20):** `TS1x5AR87CipqAqF3bb7sqePBKqRLFEc4Q`
+* 🪙 **Bitcoin (BTC):** `bc1qpamcvn5le907jkt5zhhd4c2r783489nts72m8m`
+* * 💎 **Ethereum (ETH):** `0x354dc4b9cEC4fC05021Cd26734B8cc839390e5af`
+
+---
