@@ -1,6 +1,6 @@
 {
   "name": "joplin-plugin-checkbox-sum-giicha",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Plugin for Joplin that calculates the total sum of numbers in note with checkboxes.",
   "main": "dist/index.js",
   "keywords": [

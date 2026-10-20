@@ -74,38 +74,91 @@ joplin.plugins.register({
 			for (const item of rowMatches) {
 				if (item.type === 'html') {
 					// --- HTML TABLE ROW PARSING PROTOCOL ---
-					// FIX: Safely access primitive string by index from RegExpExecArray object map
 					const rowHtmlString: string = item.content[0];
-					const isChecked: boolean = /<li[^>]*class="[^"]*checked[^"]*"[^>]*>/i.test(rowHtmlString);
-					const isUnchecked: boolean = /<ul[^>]*class="[^"]*joplin-checklist[^"]*"[^>]*>/i.test(rowHtmlString) && !isChecked;
 					
-					if (isChecked || isUnchecked) {
-						const tdRegex: RegExp = /<td[^>]*>([\s\(\S\)]*?)<\/td>/gi;
-						let tdMatch: RegExpExecArray | null;
-						let rowTexts: string[] = [];
-						let rowSum: number = 0;
+					const tdRegex: RegExp = /<td[^>]*>([\s\(\S\)]*?)<\/td>/gi;
+					let tdMatch: RegExpExecArray | null;
+					
+					// 1. Собрать содержимое всех ячеек в массив для анализа
+					const tdContentMatches: string[] = [];
+					while ((tdMatch = tdRegex.exec(rowHtmlString)) !== null) {
+						tdContentMatches.push(tdMatch[0]);
+					}
+					tdRegex.lastIndex = 0; // Сброс индекса
 
+					// Подсчитываем РЕАЛЬНЫЕ чекбоксы в строке таблицы
+					let checkboxCount = 0;
+					let isSingleCheckedRow = false; 
+
+					for (const cellHtmlText of tdContentMatches) {
+						// Чекбокс детектируется, если ячейка содержит класс joplin-checklist или теги списка чекбоксов
+						const hasRealCheckbox = /class="[^"]*(?:checked|checkbox|joplin-checklist)[^"]*"/i.test(cellHtmlText) || /<li[^>]*>/i.test(cellHtmlText);
+						if (hasRealCheckbox) {
+							checkboxCount++;
+							if (/class="[^"]*checked[^"]*"/i.test(cellHtmlText)) {
+								isSingleCheckedRow = true;
+							}
+						}
+					}
+
+					if (checkboxCount > 0) {
+						let rowTexts: string[] = [];
+						let rowSumChecked: number = 0;
+						let rowSumUnchecked: number = 0;
+						let hasCheckedContent = false;
+
+						// 2. Основной проход и разбор ячеек по условию количества чекбоксов
 						while ((tdMatch = tdRegex.exec(rowHtmlString)) !== null) {
 							const cellHtml: string = tdMatch[0];
 							const cleanRawText: string = stripHtml(cellHtml);
 							
 							if (cleanRawText.length > 0) {
+								const isCellChecked = /class="[^"]*checked[^"]*"/i.test(cellHtml);
 								const isCellBold: boolean = /<b[^>]*>.*?<\/b>|<strong[^>]*>.*?<\/strong>|font-weight:\s*bold/gi.test(cellHtml);
 								let formattedText: string = cleanRawText;
 								
 								if (isCellBold) {
+									// Игнорируем жирные числа
 									formattedText = cleanRawText.replace(numberRegex, (num) => `<mark style="background-color: #fff2a3; color: #5d4037; padding: 0 2px; border-radius: 2px;">${num}</mark>`);
 								} else {
-									if (isChecked) {
-										formattedText = cleanRawText.replace(numberRegex, (num) => `<mark style="background-color: #d1f5d3; color: #1b5e20; padding: 0 2px; border-radius: 2px; font-weight: bold;">${num}</mark>`);
-									} else {
-										formattedText = cleanRawText.replace(numberRegex, (num) => `<mark style="background-color: #f0f0f0; color: #666; padding: 0 2px; border-radius: 2px;">${num}</mark>`);
-									}
-									
 									const cellNumbers: RegExpMatchArray | null = cleanRawText.match(numberRegex);
-									if (cellNumbers) {
-										for (const numStr of cellNumbers) {
-											rowSum += parseFloat(numStr.replace(',', '.'));
+									
+									// Применяем гибридное правило
+									if (checkboxCount <= 1) {
+										// СЦЕНАРИЙ А: Чекбокс всего один на строку. Статус строки определяет судьбу всех чисел ряда.
+										if (isSingleCheckedRow) {
+											hasCheckedContent = true;
+											formattedText = cleanRawText.replace(numberRegex, (num) => `<mark style="background-color: #d1f5d3; color: #1b5e20; padding: 0 2px; border-radius: 2px; font-weight: bold;">${num}</mark>`);
+											if (cellNumbers) {
+												for (const numStr of cellNumbers) {
+													rowSumChecked += parseFloat(numStr.replace(',', '.'));
+												}
+											}
+										} else {
+											formattedText = cleanRawText.replace(numberRegex, (num) => `<mark style="background-color: #f0f0f0; color: #666; padding: 0 2px; border-radius: 2px;">${num}</mark>`);
+											if (cellNumbers) {
+												for (const numStr of cellNumbers) {
+													rowSumUnchecked += parseFloat(numStr.replace(',', '.'));
+												}
+											}
+										}
+									} else {
+										// СЦЕНАРИЙ Б: В строке НЕСКОЛЬКО чекбоксов. Считаем строго поклеточно.
+										if (isCellChecked) {
+											hasCheckedContent = true;
+											formattedText = cleanRawText.replace(numberRegex, (num) => `<mark style="background-color: #d1f5d3; color: #1b5e20; padding: 0 2px; border-radius: 2px; font-weight: bold;">${num}</mark>`);
+											if (cellNumbers) {
+												for (const numStr of cellNumbers) {
+													rowSumChecked += parseFloat(numStr.replace(',', '.'));
+												}
+											}
+										} else {
+											formattedText = cleanRawText.replace(numberRegex, (num) => `<mark style="background-color: #f0f0f0; color: #666; padding: 0 2px; border-radius: 2px;">${num}</mark>`);
+											if (cellNumbers) {
+												for (const numStr of cellNumbers) {
+													rowSumUnchecked += parseFloat(numStr.replace(',', '.'));
+												}
+											}
 										}
 									}
 								}
@@ -113,20 +166,18 @@ joplin.plugins.register({
 							}
 						}
 
-						const displayRowSum: number = Number(rowSum.toFixed(2));
-						if (isChecked) {
-							totalCheckedSum += rowSum;
-							if (rowTexts.length > 0) {
-								const rowDescription: string = rowTexts.join(' - ');
-								detailsLines.push(`<b>${displayRowSum}</b> (${rowDescription})`);
-							}
-						} else {
-							totalUncheckedSum += rowSum;
+						// Накапливаем глобальную аналитику раздельно
+						totalCheckedSum += rowSumChecked;
+						totalUncheckedSum += rowSumUnchecked;
+
+						// В список Details выводим сумму выполненного в этой строке
+						if (hasCheckedContent && rowSumChecked > 0) {
+							const displayRowSum = Number(rowSumChecked.toFixed(2));
+							detailsLines.push(`<b>${displayRowSum}</b> (${rowTexts.join(' - ')})`);
 						}
 					}
 				} else {
 					// --- STANDARD MARKDOWN LINE PARSING PROTOCOL ---
-					// FIX: Explicitly target group index 1 for checkbox state and group index 2 for line content string primitive [1]
 					const statusChar: string = item.content[1];
 					const isChecked: boolean = (statusChar.trim().toLowerCase() === 'x');
 					const lineContent: string = item.content[2];
@@ -135,18 +186,16 @@ joplin.plugins.register({
 						let lineSum: number = 0;
 						const cleanLine: string = lineContent.trim();
 						
-						// 1. Matches ANY markdown bold block layout markers and replaces internal numbers with safe custom HTML nodes
 						let processedMd: string = cleanLine
-							.replace(/\*\*([\s\S]*?)\*\*/g, (m, boldText) => {
+							.replace(/\*\*([\s\(\S\)]*?)\*\*/g, (m, boldText) => {
 								const shieldedText = boldText.replace(numberRegex, (num) => `<mark class="sum-ignored" style="background-color: #fff2a3; color: #5d4037; padding: 0 2px; border-radius: 2px; font-weight: bold;">${num}</mark>`);
 								return `<b>${shieldedText}</b>`;
 							})
-							.replace(/__([\s\S]*?)__/g, (m, boldText) => {
+							.replace(/__([\s\(\S\)]*?)__/g, (m, boldText) => {
 								const shieldedText = boldText.replace(numberRegex, (num) => `<mark class="sum-ignored" style="background-color: #fff2a3; color: #5d4037; padding: 0 2px; border-radius: 2px; font-weight: bold;">${num}</mark>`);
 								return `<b>${shieldedText}</b>`;
 							});
 
-						// 2. Calculate totals strictly utilizing segments outside the shielded node boundaries
 						let tempTextForMath = processedMd;
 						tempTextForMath = tempTextForMath.replace(/<mark class=["']sum-ignored["'][^>]*>.*?<\/mark>/gi, '');
 						
@@ -160,7 +209,6 @@ joplin.plugins.register({
 							}
 						}
 
-						// 3. Highlight normal numbers dynamically based on checklist fulfillment statuses
 						const parts = processedMd.split(/(<mark[^>]*>.*?<\/mark>|<b>.*?<\/b>)/g);
 						let lineFormattedParts: string[] = [];
 
@@ -178,7 +226,6 @@ joplin.plugins.register({
 							}
 						}
 
-						// Strip outer HTML b-tags safely
 						let finalLineContent: string = lineFormattedParts.join('');
 						finalLineContent = finalLineContent.replace(/<\/?b[^>]*>/gi, '');
 
@@ -193,7 +240,6 @@ joplin.plugins.register({
 					}
 				}
 			}
-
 			// --- STEP 5: Build HTML nodes dynamically for the Details collection ---
 			let detailsHtml: string = '';
 			if (detailsLines.length > 0) {
@@ -205,7 +251,6 @@ joplin.plugins.register({
 				detailsHtml += `</ul>`;
 			}
 
-			// Calculate floating-point configurations accurately
 			const displayCheckedSum: number = Number(totalCheckedSum.toFixed(2));
 			const displayUncheckedSum: number = Number(totalUncheckedSum.toFixed(2));
 			const displayGrandTotalSum: number = Number((totalCheckedSum + totalUncheckedSum).toFixed(2));
@@ -227,8 +272,8 @@ joplin.plugins.register({
 					</div>
 				</div>
 			`;
+
 			// --- STEP 7: Flush layout changes straight into the Joplin side UI view pane ---
-			// Wrapped the entire UI inside an absolute container block tracking 100% viewport heights to enable scrollbars
 			await panels.setHtml(view, `
 				<div style="padding: 10px; font-family: sans-serif; box-sizing: border-box; height: 100vh; overflow-y: auto;">
 					<h3 style="margin-bottom: 5px; color: #555;">Checked Sum:</h3>

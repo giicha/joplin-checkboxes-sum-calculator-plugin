@@ -2,7 +2,7 @@
 	"manifest_version": 1,
 	"id": "com.giicha.joplin-checkboxes-sum-plugin",
 	"app_min_version": "3.7",
-	"version": "1.0.10",
+	"version": "1.0.11",
 	"name": "Checkbox Sum Calculator",
 	"description": "Sum up all numbers inside note with checkboxes.",
 	"author": "giicha",
