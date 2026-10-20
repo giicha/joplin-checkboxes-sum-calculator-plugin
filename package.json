@@ -1,5 +1,5 @@
 {
-  "name": "@giichao/joplin-plugin-checkbox-sum",
+  "name": "@giicha/joplin-plugin-checkbox-sum",
   "version": "1.0.5",
   "scripts": {
     "dist": "webpack --env joplin-plugin-config=buildMain && webpack --env joplin-plugin-config=buildExtraScripts && webpack --env joplin-plugin-config=createArchive",
