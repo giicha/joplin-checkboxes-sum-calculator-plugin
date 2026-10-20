@@ -18,6 +18,15 @@ It works natively across **both layouts**: standard Markdown lists and complex v
 * **Table Column Isolation:** Automatically excludes completely empty structural table columns/cells to keep the Details timeline compact and clear.
 * **Toolbar Visibility Toggle:** Includes a customized plus-square button (`+`) on your main note toolbar to easily show or hide the side panel on demand.
 
+## Use Cases & Examples
+
+Here are 5 practical ways to automate your workflows using the **Checkbox Sum Calculator**:
+
+* 🛒 **Smart Shopping Lists & Budget Estimators:** Build dynamic tables for your upcoming purchases. Bold text parameters like screen sizes (`**4K**`) or version tags (`v**12**`) to bypass calculation, and check items to instantly calculate the total cost of your active cart.
+* 🥦 **Daily Calorie & Macro Tracker:** Keep a food journal directly in your notes. Use decimal values (e.g., `1.5` servings or `0,5` packs) to precisely count calories, protein, or carbs as you check off what you eat throughout the day.
+* 💼 **Freelance Billing & Time Tracking:** List completed tasks with hours spent (e.g., `4.5` hours). Toggle checkboxes as tasks get approved to see the cumulative billable hours or invoice totals in real-time.
+* 📈 **Savings Progress & Debt Paydown:** Set financial milestones (e.g., *Save from October bonus — 500*). Check off milestones as you deposit money, letting the sidebar track your exact total savings progress.
+* 🎒 **Hiking Gear Weight Planner:** Track every gram before a big trip. List your equipment with individual weights (`0.3` kg or `450` g). As you physically pack items into your backpack and check them, the panel updates the current total weight of your gear.
 
 
 ## Examples & Rules
