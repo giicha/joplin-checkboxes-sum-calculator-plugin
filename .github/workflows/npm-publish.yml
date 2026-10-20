@@ -32,3 +32,9 @@ jobs:
       - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+      - name: Upload JPL to GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: publish/*.jpl
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
