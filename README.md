@@ -6,7 +6,7 @@ It works natively across **both layouts**: standard Markdown lists and complex v
 
 ---
 
-## ✨ Features
+## Features
 
 * **Instant Dynamic Calculation:** Updates the total sum automatically a couple of seconds after you click a checkbox. No manual triggers required.
 * **Smart Bold-Number Filter:** Explicitly ignores any numbers formatted as **bold text**. This lets you freely write item titles, serial codes, or model IDs containing digits without messing up your math.
@@ -16,9 +16,9 @@ It works natively across **both layouts**: standard Markdown lists and complex v
 
 ---
 
-## 📊 Live Examples & Formatting Rules
+## Live Examples & Formatting Rules
 
-### 🛠️ Rule: Bypassing Model Names with Numbers
+### Rule: Bypassing Model Names with Numbers
 If a row contains numbers that represent a model name or item count rather than a price, simply format them as **bold** (`**number**` in Markdown or using the `B` tool in the visual editor). The plugin will ignore bold numbers and add only regular numbers to the total sum.
 
 #### Example 1: Rich Text HTML Tables
@@ -47,7 +47,7 @@ If a row contains numbers that represent a model name or item count rather than 
 
 ---
 
-## 🛠️ Installation
+## Installation
 
 ### Manual Installation (.jpl file)
 1. Download the latest compiled extension file from the `publish/` directory of this repository (e.g., `com.giicha.joplin-checkboxes-sum-plugin.jpl`).
@@ -58,7 +58,7 @@ If a row contains numbers that represent a model name or item count rather than 
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 1. Click the **Plus Square (`+`)** action button on your note toolbar to bring up the *Checkbox Sum* sidebar interface.
 2. Begin checking checkboxes or table rows within your note body.
