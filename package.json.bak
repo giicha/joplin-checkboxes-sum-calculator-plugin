@@ -1,6 +1,15 @@
-{
-  "name": "@giicha/joplin-plugin-checkbox-sum",
-  "version": "1.0.7",
+{{
+  "name": "joplin-plugin-checkbox-sum-giicha",
+  "version": "1.0.9",
+  "description": "Plugin for Joplin that calculates the total sum of numbers in note with checkboxes.",
+  "main": "dist/index.js",
+  "keywords": [
+    "joplin-plugin"
+  ],
+  "publishConfig": {
+    "name": "@giicha/joplin-plugin-checkbox-sum",
+    "access": "public"
+  },
   "scripts": {
     "dist": "webpack --env joplin-plugin-config=buildMain && webpack --env joplin-plugin-config=buildExtraScripts && webpack --env joplin-plugin-config=createArchive",
     "prepare": "npm run dist",
@@ -12,9 +21,6 @@
     "url": "git+https://github.com/giicha/joplin-checkboxes-sum-plugin"
   },
   "license": "MIT",
-  "keywords": [
-    "joplin-plugin"
-  ],
   "files": [
     "publish"
   ],
