@@ -102,7 +102,7 @@ joplin.plugins.register({
 
 						totalSum += rowSum;
 						if (rowTexts.length > 0) {
-							const rowDescription = rowTexts.join(' → ');
+							const rowDescription = rowTexts.join(' - '); // Separator
 							detailsLines.push(`<b>${rowSum}</b> (${rowDescription})`);
 						}
 					}
