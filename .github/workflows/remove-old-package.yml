@@ -1,0 +1,21 @@
+name: Remove Old NPM Package
+
+on:
+  workflow_dispatch: # Позволяет запустить экшен вручную кнопкой в интерфейсе
+
+jobs:
+  unpublish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://npmjs.org'
+
+       - name: Unpublish from NPM
+        run: |
+          npm unpublish @giicha/joplin-plugin-checkbox-sum --force
+          npm unpublish joplin-plugin-checkbox-sum-giicha --force
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
