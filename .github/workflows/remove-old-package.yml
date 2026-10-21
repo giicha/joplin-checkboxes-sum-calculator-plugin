@@ -13,7 +13,7 @@ jobs:
           node-version: '20'
           registry-url: 'https://npmjs.org'
 
-       - name: Unpublish from NPM
+      - name: Unpublish from NPM
         run: |
           npm unpublish @giicha/joplin-plugin-checkbox-sum --force
           npm unpublish joplin-plugin-checkbox-sum-giicha --force
