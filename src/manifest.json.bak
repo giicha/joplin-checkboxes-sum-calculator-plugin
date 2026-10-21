@@ -6,7 +6,7 @@
 	"name": "Checkbox Sum Calculator",
 	"description": "Summing up all numbers in strings, rows or cells with checkboxes.",
 	"author": "giicha",
-	"homepage_url": "",
+	"homepage_url": "https://github.com/giicha/joplin-checkboxes-sum-calculator-plugin",
 	"repository_url": "https://github.com/giicha/joplin-checkboxes-sum-calculator-plugin",
 	"keywords": [],
 	"categories": [],
