@@ -1,7 +1,9 @@
 
 <div align="center">
   <h1>Joplin Checkbox Sum Calculator Plugin</h1>
+  <p>
   <i>This is a plugin for <a href="https://github.com/laurent22/joplin">Joplin</a>. Refer to <a href="https://github.com/laurent22/joplin/tree/dev/packages/app-cli/tests/support/plugins/toc/">joplin toc</a>.</i>
+  </p>
   <p>
     <img src="https://img.shields.io/github/issues/giicha/joplin-checkboxes-sum-calculator-plugin" />
     <img src="https://img.shields.io/github/license/giicha/joplin-checkboxes-sum-calculator-plugin" />
