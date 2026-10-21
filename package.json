@@ -1,7 +1,7 @@
 {
   "name": "joplin-checkboxes-sum-calculator-plugin",
-  "version": "1.0.0",
-  "description": "Plugin for Joplin that calculates the total sum of numbers in note with checkboxes.",
+  "version": "1.0.16",
+  "description": "Plugin for Joplin that summing up all numbers in strings, rows or cells with checked checkboxes.",
   "main": "dist/index.js",
   "keywords": [
     "joplin-plugin"

@@ -1,13 +1,13 @@
 {
   "name": "joplin-checkboxes-sum-calculator-plugin",
-  "version": "1.0.0",
+  "version": "1.0.16",
   "description": "Plugin for Joplin that calculates the total sum of numbers in note with checkboxes.",
   "main": "dist/index.js",
   "keywords": [
     "joplin-plugin"
   ],
   "publishConfig": {
-    "name": "@giicha/joplin-plugin-checkbox-sum",
+    "name": "joplin-checkboxes-sum-calculator-plugin",
     "access": "public"
   },
   "scripts": {
