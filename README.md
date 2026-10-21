@@ -28,9 +28,9 @@ Here are 5 practical ways to automate your workflows using the **Checkbox Sum Ca
 
 * 🛒 **Smart Shopping Lists & Budget Estimators:** Build dynamic tables for your upcoming purchases. Bold text parameters like screen sizes (`**4K**`) or version tags (`**v12**`) to bypass calculation, and check items to instantly calculate the total cost of your active cart.
 * 🥦 **Daily Calorie & Macro Tracker:** Keep a food journal directly in your notes. Use decimal values (e.g., `1.5` servings or `0,5` packs) to precisely count calories, protein, or carbs as you check off what you eat throughout the day.
-* 💼 **Freelance Billing & Time Tracking:** List completed tasks with hours spent (e.g., `4.5` hours). Toggle checkboxes as tasks get approved to see the cumulative billable hours or invoice totals in real-time.
+* 💻 **Freelance Billing & Time Tracking:** List completed tasks with hours spent (e.g., `4.5` hours). Toggle checkboxes as tasks get approved to see the cumulative billable hours or invoice totals in real-time.
 * 📈 **Savings Progress & Debt Paydown:** Set financial milestones (e.g., *Save from October bonus — 500*). Check off milestones as you deposit money, letting the sidebar track your exact total savings progress.
-* 🎒 **Hiking Gear Weight Planner:** Track every gram before a big trip. List your equipment with individual weights (`0.3` kg or `450` g). As you physically pack items into your backpack and check them, the panel updates the current total weight of your gear.
+* 🗻 **Hiking Gear Weight Planner:** Track every gram before a big trip. List your equipment with individual weights (`0.3` kg or `450` g). As you physically pack items into your backpack and check them, the panel updates the current total weight of your gear.
 
 
 ## Examples & Rules
@@ -51,7 +51,7 @@ Tables apply an automated structural analysis matrix tailored for tabular accoun
 * It highlights the value in **yellow** inside the list views and **completely excludes it from all calculations**. This allows you to list sizes, years, model iterations, or dimensions (e.g., `MacBook Pro **15-inch** — 650`) without breaking your monetary or calorie math.
 
 
-## 🛠️ Installation
+## Installation
 
 ### Method 1: Directly via the Joplin App (Recommended)
 1. Launch **Joplin** on your desktop.
@@ -81,7 +81,7 @@ Once initialized, using the plugin is immediate and seamlessly embedded inside y
 4. **Infinite Height Support:** If your logs grow long (e.g., tracking a full year of savings or an intensive grocery receipt spreadsheet), the pane features an integrated vertical scroll container (`overflow-y: auto`) ensuring smooth scrolling access without breaking your UI.
 
 
-## 📄 License
+## License
 
 This repository is distributed under the terms of the **MIT License**. You are free to copy, modify, distribute, or use this extension setup commercially, provided the original author credits remain intact. See the `LICENSE` file for details.
 
