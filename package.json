@@ -7,7 +7,7 @@
     "joplin-plugin"
   ],
   "publishConfig": {
-    "name": "@giicha/joplin-plugin-checkbox-sum",
+    "name": "joplin-checkboxes-sum-calculator-plugin",
     "access": "public"
   },
   "scripts": {
