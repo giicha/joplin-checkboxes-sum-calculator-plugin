@@ -38,6 +38,6 @@
 		"src": "images/CSC_Promo.png",
 		"label": "Checkbox Sum Calculator"
 	},
-	"_publish_hash": "sha256:5c5456b431e5cda341ee56cab9fc1935bc6bb5c5ccbf49c84fc7637bb5776bed",
-	"_publish_commit": "main:1b333f72452dc164348774fdd5ab28344c0420f8"
+	"_publish_hash": "sha256:5ec72bcafc17db08226b36948253e2df40287b00e4dffddb0456ed4de68e03de",
+	"_publish_commit": "main:c9b73a0e3c02010981dcdb3a9bd366b38c6fc671"
 }
