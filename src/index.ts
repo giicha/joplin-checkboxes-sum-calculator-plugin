@@ -84,7 +84,7 @@ joplin.plugins.register({
 					while ((tdMatch = tdRegex.exec(rowHtmlString)) !== null) {
 						tdContentMatches.push(tdMatch[0]);
 					}
-					tdRegex.lastIndex = 0; // Сброс индекса
+					tdRegex.lastIndex = 0; // Сброс индекс
 
 					// Подсчитываем РЕАЛЬНЫЕ чекбоксы в строке таблицы
 					let checkboxCount = 0;
@@ -119,7 +119,7 @@ joplin.plugins.register({
 								
 								if (isCellBold) {
 									// Игнорируем жирные числа
-									formattedText = cleanRawText.replace(numberRegex, (num) => `<mark style="background-color: #fff2a3; color: #5d4037; padding: 0 2px; border-radius: 2px;">${num}</mark>`);
+									formattedText = cleanRawText.replace(numberRegex, (num: string) => `<mark style="background-color: #fff2a3; color: #5d4037; padding: 0 2px; border-radius: 2px;">${num}</mark>`);
 								} else {
 									const cellNumbers: RegExpMatchArray | null = cleanRawText.match(numberRegex);
 									
@@ -128,14 +128,14 @@ joplin.plugins.register({
 										// СЦЕНАРИЙ А: Чекбокс всего один на строку. Статус строки определяет судьбу всех чисел ряда.
 										if (isSingleCheckedRow) {
 											hasCheckedContent = true;
-											formattedText = cleanRawText.replace(numberRegex, (num) => `<mark style="background-color: #d1f5d3; color: #1b5e20; padding: 0 2px; border-radius: 2px; font-weight: bold;">${num}</mark>`);
+											formattedText = cleanRawText.replace(numberRegex, (num: string) => `<mark style="background-color: #d1f5d3; color: #1b5e20; padding: 0 2px; border-radius: 2px; font-weight: bold;">${num}</mark>`);
 											if (cellNumbers) {
 												for (const numStr of cellNumbers) {
 													rowSumChecked += parseFloat(numStr.replace(',', '.'));
 												}
 											}
 										} else {
-											formattedText = cleanRawText.replace(numberRegex, (num) => `<mark style="background-color: #f0f0f0; color: #666; padding: 0 2px; border-radius: 2px;">${num}</mark>`);
+											formattedText = cleanRawText.replace(numberRegex, (num: string) => `<mark style="background-color: #f0f0f0; color: #666; padding: 0 2px; border-radius: 2px;">${num}</mark>`);
 											if (cellNumbers) {
 												for (const numStr of cellNumbers) {
 													rowSumUnchecked += parseFloat(numStr.replace(',', '.'));
@@ -146,14 +146,14 @@ joplin.plugins.register({
 										// СЦЕНАРИЙ Б: В строке НЕСКОЛЬКО чекбоксов. Считаем строго поклеточно.
 										if (isCellChecked) {
 											hasCheckedContent = true;
-											formattedText = cleanRawText.replace(numberRegex, (num) => `<mark style="background-color: #d1f5d3; color: #1b5e20; padding: 0 2px; border-radius: 2px; font-weight: bold;">${num}</mark>`);
+											formattedText = cleanRawText.replace(numberRegex, (num: string) => `<mark style="background-color: #d1f5d3; color: #1b5e20; padding: 0 2px; border-radius: 2px; font-weight: bold;">${num}</mark>`);
 											if (cellNumbers) {
 												for (const numStr of cellNumbers) {
 													rowSumChecked += parseFloat(numStr.replace(',', '.'));
 												}
 											}
 										} else {
-											formattedText = cleanRawText.replace(numberRegex, (num) => `<mark style="background-color: #f0f0f0; color: #666; padding: 0 2px; border-radius: 2px;">${num}</mark>`);
+											formattedText = cleanRawText.replace(numberRegex, (num: string) => `<mark style="background-color: #f0f0f0; color: #666; padding: 0 2px; border-radius: 2px;">${num}</mark>`);
 											if (cellNumbers) {
 												for (const numStr of cellNumbers) {
 													rowSumUnchecked += parseFloat(numStr.replace(',', '.'));
@@ -188,11 +188,11 @@ joplin.plugins.register({
 						
 						let processedMd: string = cleanLine
 							.replace(/\*\*([\s\(\S\)]*?)\*\*/g, (m, boldText) => {
-								const shieldedText = boldText.replace(numberRegex, (num) => `<mark class="sum-ignored" style="background-color: #fff2a3; color: #5d4037; padding: 0 2px; border-radius: 2px; font-weight: bold;">${num}</mark>`);
+								const shieldedText = boldText.replace(numberRegex, (num: string) => `<mark class="sum-ignored" style="background-color: #fff2a3; color: #5d4037; padding: 0 2px; border-radius: 2px; font-weight: bold;">${num}</mark>`);
 								return `<b>${shieldedText}</b>`;
 							})
 							.replace(/__([\s\(\S\)]*?)__/g, (m, boldText) => {
-								const shieldedText = boldText.replace(numberRegex, (num) => `<mark class="sum-ignored" style="background-color: #fff2a3; color: #5d4037; padding: 0 2px; border-radius: 2px; font-weight: bold;">${num}</mark>`);
+								const shieldedText = boldText.replace(numberRegex, (num: string) => `<mark class="sum-ignored" style="background-color: #fff2a3; color: #5d4037; padding: 0 2px; border-radius: 2px; font-weight: bold;">${num}</mark>`);
 								return `<b>${shieldedText}</b>`;
 							});
 
@@ -218,9 +218,9 @@ joplin.plugins.register({
 							} else {
 								let markedPart = part;
 								if (isChecked) {
-									markedPart = part.replace(numberRegex, (num) => `<mark style="background-color: #d1f5d3; color: #1b5e20; padding: 0 2px; border-radius: 2px; font-weight: bold;">${num}</mark>`);
+									markedPart = part.replace(numberRegex, (num: string) => `<mark style="background-color: #d1f5d3; color: #1b5e20; padding: 0 2px; border-radius: 2px; font-weight: bold;">${num}</mark>`);
 								} else {
-									markedPart = part.replace(numberRegex, (num) => `<mark style="background-color: #f0f0f0; color: #666; padding: 0 2px; border-radius: 2px;">${num}</mark>`);
+									markedPart = part.replace(numberRegex, (num: string) => `<mark style="background-color: #f0f0f0; color: #666; padding: 0 2px; border-radius: 2px;">${num}</mark>`);
 								}
 								lineFormattedParts.push(markedPart);
 							}
@@ -327,4 +327,3 @@ joplin.plugins.register({
 		updateSum();
 	},
 });
-
