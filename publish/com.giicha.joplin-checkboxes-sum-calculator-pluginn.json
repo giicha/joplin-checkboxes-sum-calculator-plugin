@@ -2,7 +2,7 @@
 	"manifest_version": 1,
 	"id": "com.giicha.joplin-checkboxes-sum-calculator-pluginn",
 	"app_min_version": "3.7",
-	"version": "1.0.19",
+	"version": "1.0.20",
 	"name": "Checkbox Sum Calculator",
 	"description": "Summing up all numbers in strings, rows or cells with checked checkboxes.",
 	"author": "giicha",
@@ -38,6 +38,6 @@
 		"src": "images/CSC_Promo.png",
 		"label": "Checkbox Sum Calculator"
 	},
-	"_publish_hash": "sha256:9b0d7b36555c5f63072cc70394480d1cceda0e2f20553d799b59ec6a438ec8d7",
-	"_publish_commit": "main:c0110e2a7c6587108dbf2f01c7dca32601c2522f"
+	"_publish_hash": "sha256:a5ac23f8d1a31f3bc102267e43ab76c8949465c0eb42592c6a1280ffc582e816",
+	"_publish_commit": "main:58edf8f2ac0b0f209571fffec75da62dc0f86b31"
 }
