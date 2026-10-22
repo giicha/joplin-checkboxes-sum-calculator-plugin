@@ -7,9 +7,9 @@
   <p>
     <img src="https://img.shields.io/github/issues/giicha/joplin-checkboxes-sum-calculator-plugin" />
     <img src="https://img.shields.io/github/license/giicha/joplin-checkboxes-sum-calculator-plugin" />
-    <img src="https://img.shields.io/npm/v/joplin-checkboxes-sum-calculator-plugin?label=version" />
+    <img src="https://img.shields.io/npm/v/joplin-plugin-checkboxes-sum-calculator?label=version" />
     <img src="https://img.shields.io/github/downloads/giicha/joplin-checkboxes-sum-calculator-plugin/total?label=github%20downloads" />
-    <img src="https://img.shields.io/npm/dt/joplin-checkboxes-sum-calculator-plugin?label=npm%20downloads" />
+    <img src="https://img.shields.io/npm/dt/joplin-plugin-checkboxes-sum-calculator?label=npm%20downloads" />
   </p>
   <hr>
 </div>
