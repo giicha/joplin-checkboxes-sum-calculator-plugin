@@ -1,13 +1,13 @@
 {
 	"manifest_version": 1,
-	"id": "com.giicha.joplin-checkboxes-sum-calculator-pluginn",
+	"id": "com.giicha.joplin-plugin-checkboxes-sum-calculator",
 	"app_min_version": "3.7",
-	"version": "1.0.24",
+	"version": "1.0.27",
 	"name": "Checkbox Sum Calculator",
 	"description": "Summing up all numbers in strings, rows or cells with checked checkboxes.",
 	"author": "giicha",
-	"homepage_url": "https://github.com/giicha/joplin-checkboxes-sum-calculator-plugin",
-	"repository_url": "https://github.com/giicha/joplin-checkboxes-sum-calculator-plugin",
+	"homepage_url": "https://github.com/giicha/joplin-plugin-checkboxes-sum-calculator",
+	"repository_url": "https://github.com/giicha/joplin-plugin-checkboxes-sum-calculator",
 	"keywords": [
 		"joplin-plugin",
 		"checkbox",
@@ -38,6 +38,6 @@
 		"src": "images/CSC_Promo.png",
 		"label": "Checkbox Sum Calculator"
 	},
-	"_publish_hash": "sha256:5ec72bcafc17db08226b36948253e2df40287b00e4dffddb0456ed4de68e03de",
-	"_publish_commit": "main:c9b73a0e3c02010981dcdb3a9bd366b38c6fc671"
+	"_publish_hash": "sha256:dad4d60a0b1868393a6f3e04f73d80c264fde2d2e0bf0e81663dc9c6e16d959c",
+	"_publish_commit": "main:3a95e7b3bf71705a2c376364b25333b9f7c6efa8"
 }
