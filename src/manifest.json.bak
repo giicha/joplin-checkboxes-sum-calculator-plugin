@@ -8,21 +8,23 @@
 	"author": "giicha",
 	"homepage_url": "https://github.com/giicha/joplin-checkboxes-sum-calculator-plugin",
 	"repository_url": "https://github.com/giicha/joplin-checkboxes-sum-calculator-plugin",
-	"keywords": {
+	"keywords": [
 		"joplin-plugin",
  		"checkbox",
 		"sum",
 		"calculator",
 		"checklist",
 		"budget"
-	},
-	"categories": {
+	],
+	"categories": [
 		"productivity"
-	},
-	"screenshots": {
-		"src": "images/ExA_1-0-11_s.png",
-		"label": "Calculate example"
-	},
+	],
+	"screenshots": [
+	    {
+			"src": "images/ExA_1-0-11_s.png",
+			"label": "Calculate example"
+		}
+	],
 	"icons": {
         "256": "images/CSC-256.png",
         "128": "images/CSC-128.png",
