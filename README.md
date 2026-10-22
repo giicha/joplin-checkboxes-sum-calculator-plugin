@@ -80,6 +80,20 @@ Once initialized, using the plugin is immediate and seamlessly embedded inside y
    * **Analytics Summary Matrix:** A flat statistical breakdown detailing your exact *Checked*, *Unchecked (Remaining)*, and *Total* calculations.
 4. **Infinite Height Support:** If your logs grow long (e.g., tracking a full year of savings or an intensive grocery receipt spreadsheet), the pane features an integrated vertical scroll container (`overflow-y: auto`) ensuring smooth scrolling access without breaking your UI.
 
+## Development
+
+```bash
+# Install dependencies
+npm install
+
+# Build
+npm run dist
+
+# Watch mode
+npm run dev
+```
+
+The built plugin is output to the `publish/` directory. To test locally, set `plugins.devPluginPaths` in Joplin's settings to point to the `publish/` directory.
 
 ## License
 
