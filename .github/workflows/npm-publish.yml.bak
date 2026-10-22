@@ -1,6 +1,3 @@
-# Этот сценарий запускает сборку плагина Joplin, публикует его в реестр NPM 
-# и автоматически прикрепляет скомпилированный файл .jpl к релизу на GitHub.
-
 name: Node.js Package
 
 on:
@@ -17,7 +14,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '24' # Исправлено на актуальную Node 24 для устранения предупреждений
+          node-version: '24' 
           registry-url: 'https://registry.npmjs.org/'
 
       - name: Install dependencies
@@ -29,11 +26,11 @@ jobs:
       - name: Publish to NPM
         run: npm publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.npm_token }} # Использует ваш токен NPM
+          NODE_AUTH_TOKEN: ${{ secrets.npm_token }} 
 
       - name: Upload JPL to GitHub Release
         uses: softprops/action-gh-release@v1
         with:
-          files: publish/*.jpl # Теперь файл точно будет найден, так как сборка прошла в этой же сессии
+          files: publish/*.jpl 
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
