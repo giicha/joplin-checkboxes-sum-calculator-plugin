@@ -1,6 +1,6 @@
 {
   "name": "joplin-checkboxes-sum-calculator-plugin",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "description": "Plugin for Joplin that summing up all numbers in strings, rows or cells with checked checkboxes.",
   "main": "dist/index.js",
   "keywords": [
