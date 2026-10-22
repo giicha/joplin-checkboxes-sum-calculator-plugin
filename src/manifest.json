@@ -20,8 +20,10 @@
 		"productivity"
 	],
 	"screenshots": [
-		"src": "images/ExA_1-0-11_s.png",
-		"label": "Calculate example"
+	    {
+			"src": "images/ExA_1-0-11_s.png",
+			"label": "Calculate example"
+		}
 	],
 	"icons": {
         "256": "images/CSC-256.png",
