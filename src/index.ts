@@ -281,7 +281,7 @@ joplin.plugins.register({
 					${detailsHtml}
 					${analyticsHtml}
 					<p style="font-size: 11px; color: #888; margin-top: 20px; border-top: 1px dashed #ccc; padding-top: 8px; line-height: 1.4; padding-bottom: 20px;">
-						<i>Notice: All numbers in the row are added up (e.g., model IDs or serial numbers), except those formatted in <b>bold</b>. Counted numbers are highlighted in <span style="background-color: #d1f5d3; color: #1b5e20; padding: 0 2px; border-radius: 2px; font-weight: bold;">green</span>. Ignored numbers are highlighted in <span style="background-color: #fff2a3; color: #5d4037; padding: 0 2px; border-radius: 2px; font-weight: bold;">yellow</span>.</i>
+						<i>Notice: Same units required. All numbers in the row are added up (e.g., model IDs or serial numbers), except those formatted in <b>bold</b>. Counted numbers are highlighted in <span style="background-color: #d1f5d3; color: #1b5e20; padding: 0 2px; border-radius: 2px; font-weight: bold;">green</span>. Ignored numbers are highlighted in <span style="background-color: #fff2a3; color: #5d4037; padding: 0 2px; border-radius: 2px; font-weight: bold;">yellow</span>.</i>
 					</p>
 				</div>
 			`);

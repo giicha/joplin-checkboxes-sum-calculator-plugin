@@ -37,16 +37,19 @@ Here are 5 practical ways to automate your workflows using the **Checkbox Sum Ca
 
 The calculator follows strict processing protocols based on structural markdown and layout formats to ensure calculations remain robust and predictable:
 
-### 1. Standard Markdown Checklists
+### 1. Same units required
+Numbers must be in the same unit. Unit conversion is not supported yet.
+
+### 2. Standard Markdown Checklists
 * **Counted Values:** Ordinary whole or fractional numbers contained anywhere along a standard bullet list line (e.g., `- [x] Oats — 225.5 kcal`) are parsed completely.
 * **Checked vs. Unchecked:** Checked tasks (`- [x]`) map directly into the **Checked** sum bucket. Empty checklist items (`- [ ]`) map directly to **Unchecked (Remaining)**.
 
-### 2. Advanced HTML Tables
+### 3. Advanced HTML Tables
 Tables apply an automated structural analysis matrix tailored for tabular accounting:
 * **Single Checkbox Row Profile:** If a row contains **exactly one** checkbox (either filled or empty), the state of that single checkbox dictates the mathematical fate of the entire row. If marked checked, *all* regular numeric cell tokens across the entire horizontal row add up into **Checked**.
 * **Multi-Checkbox Row Profile:** If a row contains **more than one** distinct checkbox cell, the plugin flips into a hyper-granular **cell-by-cell matrix layout mode**. Numbers are summed into **Checked** strictly within cells where the checkbox is marked active. Cells holding unselected checkboxes, text strings, or no checkboxes at all flow into **Unchecked**.
 
-### 3. Smart Bold Number Isolation Rule
+### 4. Bold Number Isolation Rule
 * If any number is formatted inside **bold text** (`**number**` or `__number__`) or placed inside a bold cell (`<b>`, `<strong>`), the engine marks it as a system metadata bypass token. 
 * It highlights the value in **yellow** inside the list views and **completely excludes it from all calculations**. This allows you to list sizes, years, model iterations, or dimensions (e.g., `MacBook Pro **15-inch** — 650`) without breaking your monetary or calorie math.
 
