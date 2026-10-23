@@ -263,7 +263,7 @@ joplin.plugins.register({
 						<span style="color: #2da44e; font-weight: bold;">${displayCheckedSum}</span>
 					</div>
 					<div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
-						<span>Unchecked (Remaining):</span>
+						<span>Unchecked:</span>
 						<span style="color: #c93b3b; font-weight: bold;">${displayUncheckedSum}</span>
 					</div>
 					<div style="display: flex; justify-content: space-between; color: #000; margin-top: 4px; padding: 2px 0;">
@@ -281,7 +281,13 @@ joplin.plugins.register({
 					${detailsHtml}
 					${analyticsHtml}
 					<p style="font-size: 11px; color: #888; margin-top: 20px; border-top: 1px dashed #ccc; padding-top: 8px; line-height: 1.4; padding-bottom: 20px;">
-						<i>Notice: Same units required. All numbers in the row are added up (e.g., model IDs or serial numbers), except those formatted in <b>bold</b>. Counted numbers are highlighted in <span style="background-color: #d1f5d3; color: #1b5e20; padding: 0 2px; border-radius: 2px; font-weight: bold;">green</span>. Ignored numbers are highlighted in <span style="background-color: #fff2a3; color: #5d4037; padding: 0 2px; border-radius: 2px; font-weight: bold;">yellow</span>.</i>
+						<i>
+							Notice: <br>
+							• Same units required.No auto-convert.<br>						
+							• All numbers in the row are added up (e.g., model IDs or serial numbers), except those formatted in <strong style="font-weight: 900; color: #000; font-style: normal; font-size: 12px;">bold</strong>.<br>
+							• Counted numbers are highlighted in <span style="background-color: #d1f5d3; color: #1b5e20; padding: 0 2px; border-radius: 2px; font-weight: bold;">green</span>.<br>
+							• Ignored numbers are highlighted in <span style="background-color: #fff2a3; color: #5d4037; padding: 0 2px; border-radius: 2px; font-weight: bold;">yellow</span>.
+						</i>
 					</p>
 				</div>
 			`);
@@ -290,7 +296,7 @@ joplin.plugins.register({
 		// Configure action command to intercept toolbar visibility requests
 		await joplin.commands.register({
 			name: 'toggleCheckboxSumPanel',
-			label: 'Toggle Checkbox Sum Panel',
+			label: 'Toggle Checkbox Sum Calculator',
 			iconName: 'fas fa-plus-square',
 			execute: async () => {
 				isPanelVisible = !isPanelVisible;
